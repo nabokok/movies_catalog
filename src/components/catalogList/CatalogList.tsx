@@ -1,4 +1,5 @@
 import { Movie } from "@/types/Movie";
+import MovieCard from "../movieCard";
 
 interface Props {
   list: Movie[]
@@ -6,9 +7,11 @@ interface Props {
 
 function CatalogList({ list }: Props) {
   return (
-    <div>{list.map((movie) => (
-      <div>{movie.id}</div>
-    ))}</div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {list.map((movie) => (
+        <MovieCard key={movie.id} movie={movie} />
+      ))}
+    </div>
   )
 }
 

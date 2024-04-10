@@ -9,6 +9,11 @@ import {
 import App from './App.tsx'
 import './assets/globals.css'
 import NotFound from './pages/NotFound.tsx';
+import Catalog from './pages/Catalog.tsx';
+import Favorites from './pages/Favorites.tsx';
+import Watched from './pages/Watched.tsx';
+import MyList from './pages/MyList.tsx';
+import Movie from './pages/Movie.tsx';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +22,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <div>home</div>
+        element: <Catalog />
       },
       {
         path: "/movies",
@@ -25,19 +30,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/favorites",
-        element: <div>favorites</div>
+        element: <Favorites />
       },
       {
         path: "/watched",
-        element: <div>watched</div>
+        element: <Watched />
       },
       {
         path: "/my-list",
-        element: <div>my list</div>
+        element: <MyList />
       },
       {
         path: "/movies/:id",
-        element: <div>id</div>
+        element: <Movie />
       },
     ]
   },
