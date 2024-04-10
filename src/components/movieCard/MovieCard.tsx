@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { actions as favoritesActions } from '@/redux/slices/favoritesSlice';
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -15,7 +17,17 @@ interface Props {
 }
 
 function MovieCard({ movie }: Props) {
-  const { title, release_date, rating, image } = movie;
+  const { title, release_date, rating, image, id } = movie;
+  const dispatch = useAppDispatch();
+  const { favoritesList } = useAppSelector((state) => state.favorites);
+
+  const handleFavorites = () => {
+    if (favoritesList.some((favorite) => favorite.id === id)) {
+      dispatch(favoritesActions.remove(id));
+    } else {
+      dispatch(favoritesActions.add(movie));
+    }
+  }
 
   return (
     <Card className="w-full flex flex-col">
@@ -31,7 +43,7 @@ function MovieCard({ movie }: Props) {
       </CardContent>
       <CardFooter className="flex justify-between">
         <Button variant="outline">Add to list</Button>
-        <Button>Add to favoite</Button>
+        <Button onClick={handleFavorites}>Add to favoite</Button>
       </CardFooter>
     </Card>
   )
