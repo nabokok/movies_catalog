@@ -1,15 +1,23 @@
+import { useState } from "react";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { actions as searchActions } from "@/redux/slices/searchSlice";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
 import Nav from "../nav";
 import BurgerIcon from "../icons/BurgerIcon";
 
+
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [query, setQuery] = useState('')
+  const { query } = useAppSelector(state => state.search)
+  const dispatch = useAppDispatch();
 
   const handleToggleMenu = () => {
     setIsMenuOpen(prev => !prev)
+  }
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(searchActions.setSearchQuery(e.target.value))
   }
 
   return (
@@ -22,7 +30,7 @@ function Header() {
               type="text"
               placeholder="Search movies..."
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              onChange={handleInputChange}
             />
           </div>
           <Button onClick={handleToggleMenu} variant="ghost" className="md:hidden block"><BurgerIcon /></Button>

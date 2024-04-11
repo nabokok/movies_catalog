@@ -1,11 +1,15 @@
-import CatalogList from "@/components/catalogList";
+import { useAppSelector } from "@/redux/hooks";
 import useFetch from "../hooks/useFetch"
+import CatalogList from "@/components/catalogList";
 import { Movie } from "@/types/Movie";
+import { getFilteredMovies } from "@/services/getFilteredMovies";
 
 const API_URL = 'http://localhost:3000/movies';
 
 function Catalog() {
   const { data, loading, error } = useFetch<Movie[]>(API_URL);
+  const { query } = useAppSelector(state => state.search);
+  const movies = getFilteredMovies(query, data);
 
   if (error) {
     return <div>error</div>
@@ -15,10 +19,11 @@ function Catalog() {
     return <div>loading</div>
   }
 
+
   return (
     <section className="py-10">
       <div className="container">
-        {data ? <CatalogList list={data} /> : <div>no data</div>}
+        {movies ? <CatalogList list={movies} /> : <div>no data</div>}
       </div>
     </section>
   )

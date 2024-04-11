@@ -6,10 +6,6 @@ const API_URL = 'http://localhost:3000/movies/1';
 function MoviePage() {
   const { data, loading, error } = useFetch<Movie>(API_URL);
 
-  console.log('data: ', data)
-  console.log('loading: ', loading)
-  console.log('error: ', error)
-
   return (
     <h1>Movie</h1>
   )
