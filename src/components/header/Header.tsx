@@ -3,8 +3,10 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { actions as searchActions } from "@/redux/slices/searchSlice";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog"
 import Nav from "../nav";
 import BurgerIcon from "../icons/BurgerIcon";
+import AddMovieDialog from "../modal/AddMovieDialog";
 
 
 function Header() {
@@ -32,6 +34,12 @@ function Header() {
               value={query}
               onChange={handleInputChange}
             />
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button>Add Movie</Button>
+              </DialogTrigger>
+              <AddMovieDialog />
+            </Dialog>
           </div>
           <Button onClick={handleToggleMenu} variant="ghost" className="md:hidden block"><BurgerIcon /></Button>
         </div>
