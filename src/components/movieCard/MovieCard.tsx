@@ -64,9 +64,34 @@ function MovieCard({ movie }: Props) {
         <CardDescription>{release_date}</CardDescription>
       </CardContent>
       <CardFooter className="flex justify-start gap-2">
-        <Button onClick={handleMoviesList} size="sm"  >Add to list</Button>
-        <Button variant="outline" onClick={handlWatched} size="sm">Watched</Button>
-        <Button onClick={handleFavorites} size="sm" variant="ghost"><HeartIcon size="18" /></Button>
+
+        <Button
+          variant={moviesList.includes(movie) ? ("default") : ("outline")}
+          size="sm" className="p-2"
+          onClick={handleMoviesList}
+        >
+          {moviesList.includes(movie) ? ("In my list") : ("Add to list")}
+        </Button>
+
+        <Button
+          variant={watchedList.includes(movie) ? ("default") : ("outline")}
+          size="sm" className="p-2"
+          onClick={handlWatched}
+        >
+          {watchedList.includes(movie) ? ("Watched") : ("Not Watched")}
+        </Button>
+
+        <Button
+          variant="ghost"
+          size="sm" className="p-2"
+          onClick={handleFavorites}
+        >
+          {favoritesList.includes(movie) ? (
+            <HeartIcon size="18" color="#FF474D" />
+          ) : (
+            <HeartIcon size="18" />
+          )}
+        </Button>
       </CardFooter>
     </Card>
   )

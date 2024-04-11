@@ -8,14 +8,13 @@ function MyList() {
   const movies = getFilteredMovies(query, moviesList);
 
   return (
-    <>
-      <h1>MyList</h1>
-      <section className="py-10">
-        <div className="container">
-          {movies ? <CatalogList list={movies} /> : <div>no data</div>}
-        </div>
-      </section>
-    </>
+    <section className="py-10">
+      <div className="container">
+        <h1 className="text-2xl mb-6">My List</h1>
+        {movies?.length ? <CatalogList list={movies} /> : <div>no data</div>}
+      </div>
+    </section>
+
   )
 }
 

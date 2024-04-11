@@ -1,5 +1,6 @@
 import { useAppSelector } from "@/redux/hooks";
 import useFetch from "../hooks/useFetch"
+import { Loader2 } from "lucide-react"
 import CatalogList from "@/components/catalogList";
 import { Movie } from "@/types/Movie";
 import { getFilteredMovies } from "@/services/getFilteredMovies";
@@ -16,7 +17,11 @@ function Catalog() {
   }
 
   if (loading) {
-    return <div>loading</div>
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Loader2 className="h-16 w-16 animate-spin" />
+      </div>
+    )
   }
 
 

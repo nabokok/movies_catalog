@@ -8,14 +8,12 @@ function Watched() {
   const movies = getFilteredMovies(query, watchedList);
 
   return (
-    <>
-      <h1>Watched</h1>
-      <section className="py-10">
-        <div className="container">
-          {movies ? <CatalogList list={movies} /> : <div>no data</div>}
-        </div>
-      </section>
-    </>
+    <section className="py-10">
+      <div className="container">
+        <h1 className="text-2xl mb-6">Watched</h1>
+        {movies?.length ? <CatalogList list={movies} /> : <div>no data</div>}
+      </div>
+    </section>
   )
 }
 

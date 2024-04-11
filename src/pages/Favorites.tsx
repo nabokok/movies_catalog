@@ -8,14 +8,12 @@ function Favorites() {
   const movies = getFilteredMovies(query, favoritesList);
 
   return (
-    <>
-      <h1>Favorites</h1>
-      <section className="py-10">
-        <div className="container">
-          {movies ? <CatalogList list={movies} /> : <div>no data</div>}
-        </div>
-      </section>
-    </>
+    <section className="py-10">
+      <div className="container">
+        <h1 className="text-2xl mb-6">Favorites</h1>
+        {movies?.length ? <CatalogList list={movies} /> : <div>no data</div>}
+      </div>
+    </section>
   )
 }
 
