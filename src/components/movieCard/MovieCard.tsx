@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { actions as favoritesActions } from '@/redux/slices/favoritesSlice';
+import { actions as moviesListActions } from '@/redux/slices/listSlice';
+import { actions as watchedListActions } from '@/redux/slices/watchedSlice';
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -11,6 +13,8 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Movie } from "@/types/Movie";
+import HeartIcon from '../icons/HeartIcon';
+import StarIcon from '../icons/StarIcon';
 
 interface Props {
   movie: Movie
@@ -20,12 +24,30 @@ function MovieCard({ movie }: Props) {
   const { title, release_date, rating, image, id } = movie;
   const dispatch = useAppDispatch();
   const { favoritesList } = useAppSelector((state) => state.favorites);
+  const { moviesList } = useAppSelector((state) => state.list);
+  const { watchedList } = useAppSelector((state) => state.watched);
 
   const handleFavorites = () => {
     if (favoritesList.some((favorite) => favorite.id === id)) {
       dispatch(favoritesActions.remove(id));
     } else {
       dispatch(favoritesActions.add(movie));
+    }
+  }
+
+  const handleMoviesList = () => {
+    if (moviesList.some((movie) => movie.id === id)) {
+      dispatch(moviesListActions.remove(id));
+    } else {
+      dispatch(moviesListActions.add(movie));
+    }
+  }
+
+  const handlWatched = () => {
+    if (watchedList.some((movie) => movie.id === id)) {
+      dispatch(watchedListActions.remove(id));
+    } else {
+      dispatch(watchedListActions.add(movie));
     }
   }
 
@@ -38,12 +60,13 @@ function MovieCard({ movie }: Props) {
         <Link to={`/movies/${movie.id}`}>
           <CardTitle className="mb-2">{title}</CardTitle>
         </Link>
-        <CardDescription className="mb-2">{rating}</CardDescription>
+        <CardDescription className="mb-2 flex items-center gap-1 text-md">{rating} <StarIcon size="16" /></CardDescription>
         <CardDescription>{release_date}</CardDescription>
       </CardContent>
-      <CardFooter className="flex justify-between">
-        <Button variant="outline">Add to list</Button>
-        <Button onClick={handleFavorites}>Add to favoite</Button>
+      <CardFooter className="flex justify-start gap-2">
+        <Button onClick={handleMoviesList} size="sm"  >Add to list</Button>
+        <Button variant="outline" onClick={handlWatched} size="sm">Watched</Button>
+        <Button onClick={handleFavorites} size="sm" variant="ghost"><HeartIcon size="18" /></Button>
       </CardFooter>
     </Card>
   )

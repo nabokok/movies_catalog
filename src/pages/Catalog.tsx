@@ -7,10 +7,6 @@ const API_URL = 'http://localhost:3000/movies';
 function Catalog() {
   const { data, loading, error } = useFetch<Movie[]>(API_URL);
 
-  console.log('data: ', data)
-  console.log('loading: ', loading)
-  console.log('error: ', error)
-
   if (error) {
     return <div>error</div>
   }

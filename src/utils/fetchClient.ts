@@ -7,7 +7,7 @@ type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE';
 function request<T>(
   url: string,
   method: RequestMethod = 'GET',
-  data: Partial<Movie> | null = null, // we can send any data to the server
+  data: Partial<Movie> | null = null,
 ): Promise<T> {
   const options: RequestInit = { method };
 

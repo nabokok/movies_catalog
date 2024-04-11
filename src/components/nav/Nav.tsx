@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import CloseIcon from "@/components/icons/CloseIcon";
 
 interface Props {
   isMenuOpen: boolean,
@@ -19,7 +20,7 @@ function Nav({ isMenuOpen, onToggleMenu }: Props) {
     <NavigationMenu className={cn("fixed md:static bg-white inset-0 max-w-full md:max-w-max items-start md:items-center pt-24 md:pt-0 translate-x-full md:translate-x-0 transition-transform", {
       'translate-x-0': isMenuOpen
     })}>
-      <Button className="block fixed right-6 top-6 md:hidden" onClick={onToggleMenu} variant="ghost">X</Button>
+      <Button className="block fixed right-6 top-6 md:hidden" onClick={onToggleMenu} variant="ghost"><CloseIcon /></Button>
       <NavigationMenuList className="flex-col md:flex-row gap-6 md:gap-1">
         <NavigationMenuItem onClick={onToggleMenu}>
           <Link to="/" >
