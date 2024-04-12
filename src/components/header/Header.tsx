@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { actions as searchActions } from "@/redux/slices/searchSlice";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog } from "@/components/ui/dialog"
 import Nav from "../nav";
 import BurgerIcon from "../icons/BurgerIcon";
 import AddMovieDialog from "../dialog/AddMovieDialog";
@@ -12,6 +12,7 @@ import AddMovieDialog from "../dialog/AddMovieDialog";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { query } = useAppSelector(state => state.search)
   const { id } = useParams();
 
@@ -23,6 +24,10 @@ function Header() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(searchActions.setSearchQuery(e.target.value))
+  }
+
+  const handeToggleDialog = () => {
+    setIsDialogOpen((prev) => !prev)
   }
 
   return (
@@ -37,11 +42,9 @@ function Header() {
               value={query}
               onChange={handleInputChange}
             />}
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button>Add Movie</Button>
-              </DialogTrigger>
-              <AddMovieDialog />
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <Button onClick={handeToggleDialog}>Add Movie</Button>
+              <AddMovieDialog onToggleDialog={handeToggleDialog} />
             </Dialog>
           </div>
           <Button onClick={handleToggleMenu} variant="ghost" className="md:hidden block"><BurgerIcon /></Button>

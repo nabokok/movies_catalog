@@ -11,12 +11,25 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Movie } from '@/types/Movie';
 import CloseIcon from '../icons/CloseIcon';
+import { addMovie } from '@/api/movieApi';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { actions as moviesActions } from '@/redux/slices/moviesSlice';
 
-export function AddMovieDialog() {
+interface Props {
+  onToggleDialog: () => void;
+}
+
+function AddMovieDialog({ onToggleDialog }: Props) {
   const { register, handleSubmit, formState: { errors }, control } = useForm<Omit<Movie, 'id'>>();
+  const { movies } = useAppSelector(state => state.movies);
+  const dispatch = useAppDispatch();
 
-  const onSubmit = (data: Omit<Movie, 'id'>) => {
-    console.log('Form data:', data);
+  const onSubmit = async (data: Omit<Movie, 'id'>) => {
+
+    const id = (movies.length + 1).toString();
+    const movie = await addMovie({ ...data, id });
+
+    dispatch(moviesActions.setMovie(movie))
   };
 
   const { fields, append, remove } = useFieldArray({
@@ -63,7 +76,7 @@ export function AddMovieDialog() {
               <div key={field.id} className="flex gap-2">
                 <Input
                   className="flex-grow"
-                  {...register(`genre.${index}` as const)}
+                  {...register(`genre.${index}` as const, { required: true })}
                 />
                 <Button variant="ghost" onClick={() => removeGenre(index)}>
                   <CloseIcon size="16" />
@@ -119,7 +132,7 @@ export function AddMovieDialog() {
               <div key={field.id} className="flex gap-2">
                 <Input
                   className="flex-grow"
-                  {...register(`actors.${index}` as const)}
+                  {...register(`actors.${index}` as const, { required: true })}
                 />
                 <Button variant="ghost" onClick={() => remove(index)}>
                   <CloseIcon size="16" />
@@ -168,7 +181,7 @@ export function AddMovieDialog() {
           {errors.description && <span className="text-red-500">Description is required</span>}
         </div>
         <DialogFooter>
-          <Button type="submit">Add</Button>
+          <Button type="submit" onClick={onToggleDialog}>Add</Button>
         </DialogFooter>
       </form>
     </DialogContent>

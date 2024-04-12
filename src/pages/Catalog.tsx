@@ -1,17 +1,20 @@
-import { useAppSelector } from "@/redux/hooks";
-import useFetch from "../hooks/useFetch"
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { Loader2 } from "lucide-react"
 import CatalogList from "@/components/catalogList";
-import { Movie } from "@/types/Movie";
 import { getFilteredMovies } from "@/services/getFilteredMovies";
 import NoResult from "@/components/noResult";
-
-const API_URL = 'http://localhost:3000/movies';
+import { useEffect } from "react";
+import { fetchMovies } from "@/redux/slices/moviesSlice";
 
 function Catalog() {
-  const { data, loading, error } = useFetch<Movie[]>(API_URL);
   const { query } = useAppSelector(state => state.search);
-  const movies = getFilteredMovies(query, data);
+  const { movies, loading, error } = useAppSelector(state => state.movies);
+  const moviesList = getFilteredMovies(query, movies);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchMovies())
+  }, [])
 
   if (error) {
     return (
@@ -34,7 +37,7 @@ function Catalog() {
   return (
     <section className="py-10">
       <div className="container">
-        {movies ? <CatalogList list={movies} /> : <NoResult text="No movies found" />}
+        {moviesList ? <CatalogList list={moviesList} /> : <NoResult text="No movies found" />}
       </div>
     </section>
   )

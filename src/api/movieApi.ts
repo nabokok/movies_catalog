@@ -2,6 +2,10 @@
 import { Movie } from '../types/Movie';
 import { client } from '../utils/fetchClient';
 
+export const getMovies = () => {
+  return client.get<Movie[]>('/movies');
+};
+
 export const addMovie = (movie: Movie) => {
   return client.post<Movie>('/movies', movie);
 };
