@@ -13,11 +13,11 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Movie } from "@/types/Movie";
-import HeartIcon from '../icons/HeartIcon';
-import StarIcon from '../icons/StarIcon';
+import HeartIcon from '../Icons/HeartIcon';
+import StarIcon from '../Icons/StarIcon';
 
 interface Props {
-  movie: Movie
+  movie: Movie,
 }
 
 function MovieCard({ movie }: Props) {

@@ -8,11 +8,11 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import CloseIcon from "@/components/icons/CloseIcon";
+import CloseIcon from "@/components/Icons/CloseIcon";
 
 interface Props {
   isMenuOpen: boolean,
-  onToggleMenu: () => void
+  onToggleMenu: () => void,
 }
 
 function Nav({ isMenuOpen, onToggleMenu }: Props) {
@@ -55,4 +55,4 @@ function Nav({ isMenuOpen, onToggleMenu }: Props) {
   )
 }
 
-export default Nav
+export default Nav;

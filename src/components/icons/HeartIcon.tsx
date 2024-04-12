@@ -1,8 +1,8 @@
 import Icon from "./Icon";
 
 interface Props {
-  size: string;
-  color?: string;
+  size: string,
+  color?: string,
 }
 
 function HeartIcon({ size, color }: Props) {

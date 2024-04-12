@@ -1,7 +1,7 @@
 import Icon from "./Icon";
 
 interface Props {
-  size?: string;
+  size?: string,
 }
 
 function StarIcon({ size }: Props) {

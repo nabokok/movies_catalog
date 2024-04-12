@@ -1,8 +1,8 @@
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { Loader2 } from "lucide-react"
-import CatalogList from "@/components/catalogList";
+import CatalogList from "@/components/CatalogList";
 import { getFilteredMovies } from "@/services/getFilteredMovies";
-import NoResult from "@/components/noResult";
+import NoResult from "@/components/NoResult";
 import { useEffect } from "react";
 import { fetchMovies } from "@/redux/slices/moviesSlice";
 

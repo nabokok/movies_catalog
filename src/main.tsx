@@ -4,12 +4,14 @@ import { Provider } from 'react-redux'
 import { store } from './redux/store'
 import { RouterProvider } from "react-router-dom";
 import { router } from './router.tsx';
+import { Toaster } from "@/components/ui/toaster"
 import './assets/globals.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <Provider store={store}>
     <React.StrictMode>
       <RouterProvider router={router} />
+      <Toaster />
     </React.StrictMode>
   </Provider>
   ,

@@ -1,4 +1,3 @@
-
 import {
   AlertDialogAction,
   AlertDialogCancel,
@@ -7,10 +6,10 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/components/ui/alert-dialog"
+} from "@/components/ui/alert-dialog";
 
 interface Props {
-  onDelete: () => void;
+  onDelete: () => void,
 }
 
 function ConfirmDialog({ onDelete }: Props) {
@@ -31,4 +30,4 @@ function ConfirmDialog({ onDelete }: Props) {
   )
 }
 
-export default ConfirmDialog
+export default ConfirmDialog;

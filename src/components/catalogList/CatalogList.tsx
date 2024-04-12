@@ -1,8 +1,8 @@
 import { Movie } from "@/types/Movie";
-import MovieCard from "../movieCard";
+import MovieCard from "../MovieCard";
 
 interface Props {
-  list: Movie[]
+  list: Movie[],
 }
 
 function CatalogList({ list }: Props) {

@@ -19,7 +19,7 @@
     },
     {
       "id": "2",
-      "title": "The Godfather",
+      "title": "The Godfather 2",
       "description": "The story of the Corleone family, one of the most powerful Mafia organizations in the US.",
       "rating": 9.2,
       "release_date": "1972-03-24",
@@ -364,96 +364,6 @@
       ],
       "director": "Steven Spielberg",
       "image": "https://upload.wikimedia.org/wikipedia/en/3/38/Schindler%27s_List_movie.jpg"
-    },
-    {
-      "id": "0",
-      "actors": [
-        "d"
-      ],
-      "genre": [
-        "ascasc"
-      ],
-      "title": "scas",
-      "rating": "1",
-      "director": "Yo",
-      "release_date": "2024-04-25",
-      "image": "d",
-      "description": "d"
-    },
-    {
-      "id": "1712921093491",
-      "actors": [
-        "d"
-      ],
-      "genre": [
-        "ascasc"
-      ],
-      "title": "scas",
-      "rating": "1",
-      "director": "Yo",
-      "release_date": "2024-04-25",
-      "image": "d",
-      "description": "d"
-    },
-    {
-      "id": "1712921134052",
-      "actors": [
-        "d"
-      ],
-      "genre": [
-        "ascasc"
-      ],
-      "title": "sadas",
-      "rating": "1",
-      "director": "Yo",
-      "release_date": "2024-04-25",
-      "image": "https://static01.nyt.com/images/2023/07/28/business/28strike-movies/28strike-movies-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
-      "description": "d"
-    },
-    {
-      "id": "1712921154146",
-      "actors": [
-        "d"
-      ],
-      "genre": [
-        "ascasc"
-      ],
-      "title": "sadas1",
-      "rating": "1",
-      "director": "Yo",
-      "release_date": "2024-04-25",
-      "image": "https://static01.nyt.com/images/2023/07/28/business/28strike-movies/28strike-movies-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
-      "description": "d"
-    },
-    {
-      "id": "29",
-      "actors": [
-        "asd"
-      ],
-      "genre": [
-        "dasd"
-      ],
-      "title": "asdas",
-      "rating": "2",
-      "director": "das",
-      "release_date": "2024-04-26",
-      "image": "asd",
-      "description": "asd"
-    },
-    {
-      "id": "30",
-      "actors": [
-        "casc"
-      ],
-      "genre": [
-        "casc"
-      ],
-      "title": "asca",
-      "rating": "2",
-      "director": "acsc",
-      "release_date": "2024-04-26",
-      "image": "asc",
-      "description": "ascac"
     }
   ]
 }

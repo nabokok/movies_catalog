@@ -6,6 +6,10 @@ export const getMovies = () => {
   return client.get<Movie[]>('/movies');
 };
 
+export const getSingleMovie = (id: string) => {
+  return client.get<Movie>(`/movies/${id}`);
+};
+
 export const addMovie = (movie: Movie) => {
   return client.post<Movie>('/movies', movie);
 };

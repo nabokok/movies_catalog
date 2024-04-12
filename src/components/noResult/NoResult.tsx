@@ -1,5 +1,5 @@
 interface NoResult {
-  text: string;
+  text: string,
 }
 
 function NoResult({ text }: NoResult) {

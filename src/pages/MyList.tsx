@@ -1,5 +1,5 @@
-import CatalogList from "@/components/catalogList";
-import NoResult from "@/components/noResult";
+import CatalogList from "@/components/CatalogList";
+import NoResult from "@/components/NoResult";
 import { useAppSelector } from "@/redux/hooks";
 import { getFilteredMovies } from "@/services/getFilteredMovies";
 
