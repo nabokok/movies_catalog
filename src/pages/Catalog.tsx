@@ -4,6 +4,7 @@ import { Loader2 } from "lucide-react"
 import CatalogList from "@/components/catalogList";
 import { Movie } from "@/types/Movie";
 import { getFilteredMovies } from "@/services/getFilteredMovies";
+import NoResult from "@/components/noResult";
 
 const API_URL = 'http://localhost:3000/movies';
 
@@ -13,7 +14,13 @@ function Catalog() {
   const movies = getFilteredMovies(query, data);
 
   if (error) {
-    return <div>error</div>
+    return (
+      <section className='py-10'>
+        <div className='container'>
+          <NoResult text="Something went wrong." />
+        </div>
+      </section>
+    )
   }
 
   if (loading) {
@@ -24,11 +31,10 @@ function Catalog() {
     )
   }
 
-
   return (
     <section className="py-10">
       <div className="container">
-        {movies ? <CatalogList list={movies} /> : <div>no data</div>}
+        {movies ? <CatalogList list={movies} /> : <NoResult text="No movies found" />}
       </div>
     </section>
   )

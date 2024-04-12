@@ -10,7 +10,7 @@ import {
 
 function NotFound() {
   return (
-    <div className="flex items-center justify-center h-screen bg-blue-600">
+    <div className="flex items-center justify-center h-screen">
       <Card className="w-[420px]">
         <CardHeader className="text-center">
           <CardTitle className="lg:text-7xl text-4xl">404</CardTitle>

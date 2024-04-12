@@ -52,17 +52,17 @@ function MovieCard({ movie }: Props) {
   }
 
   return (
-    <Card className="w-full flex flex-col">
-      <CardHeader className="flex-grow ">
-        <img className="object-cover h-[300px]" src={image} alt={title} />
-      </CardHeader>
-      <CardContent>
-        <Link to={`/movies/${movie.id}`}>
+    <Card className="w-full flex flex-col justify-between">
+      <Link to={`/movies/${movie.id}`}>
+        <CardHeader className="flex-grow ">
+          <img className="object-cover h-[300px]" src={image} alt={title} />
+        </CardHeader>
+        <CardContent>
           <CardTitle className="mb-2">{title}</CardTitle>
-        </Link>
-        <CardDescription className="mb-2 flex items-center gap-1 text-md">{rating} <StarIcon size="16" /></CardDescription>
-        <CardDescription>{release_date}</CardDescription>
-      </CardContent>
+          <CardDescription className="mb-2 flex items-center gap-1 text-md">{rating} <StarIcon size="16" /></CardDescription>
+          <CardDescription>{release_date}</CardDescription>
+        </CardContent>
+      </Link>
       <CardFooter className="flex justify-start gap-2">
 
         <Button

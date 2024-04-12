@@ -1,4 +1,5 @@
 import CatalogList from "@/components/catalogList";
+import NoResult from "@/components/noResult";
 import { useAppSelector } from "@/redux/hooks";
 import { getFilteredMovies } from "@/services/getFilteredMovies";
 
@@ -10,8 +11,8 @@ function Favorites() {
   return (
     <section className="py-10">
       <div className="container">
-        <h1 className="text-2xl mb-6">Favorites</h1>
-        {movies?.length ? <CatalogList list={movies} /> : <div>no data</div>}
+        <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">Favorites</h1>
+        {movies?.length ? <CatalogList list={movies} /> : <NoResult text="There are no movies here yet" />}
       </div>
     </section>
   )
